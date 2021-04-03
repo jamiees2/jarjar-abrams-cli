@@ -65,6 +65,9 @@ object Main {
 
     val inputPath = Path(conf.jar(), os.pwd)
     val outputPath = Path(conf.out(), os.pwd)
+    if (os.exists(outputPath)) {
+      os.remove(outputPath)
+    }
 
     val outputStream = os.write.outputStream(outputPath)
     val zipOutputStream = new ZipOutputStream(outputStream)

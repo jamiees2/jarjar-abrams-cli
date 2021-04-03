@@ -1,5 +1,5 @@
 ThisBuild / scalaVersion := "2.12.11"
-ThisBuild / version := "0.1.2"
+ThisBuild / version := "0.1.3"
 ThisBuild / organization := "io.github.jamiees2"
 ThisBuild / organizationName := "jarjar-abrams-cli"
 ThisBuild / description := "A CLI interface onto jarjar-abrams for shading"
@@ -39,11 +39,15 @@ scalacOptions ++= Seq(
   "-Ywarn-unused:-patvars", // Disable warning about pattern matched variables
 )
 
+// For manual debugging of jarjar-abrams
+// lazy val jarjar_abrams_core = ProjectRef(file("../jarjar-abrams"), "core")
+// .dependsOn(jarjar_abrams_core)
+
 lazy val root = (project in file("."))
   .settings(
     name := "jarjar-abrams-cli",
     libraryDependencies ++= Seq(
-      "com.eed3si9n.jarjarabrams" %% "jarjar-abrams-core" % "0.3.0",
+      "com.eed3si9n.jarjarabrams" %% "jarjar-abrams-core" % "0.3.1",
       "org.rogach" %% "scallop" % "3.2.0",
       "org.json4s" %% "json4s-jackson" % "3.4.2",
       "com.lihaoyi" %% "os-lib" % "0.7.3",
